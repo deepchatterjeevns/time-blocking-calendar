@@ -16,10 +16,12 @@ import { cn } from '@/lib/utils'
 export function BlockEditPopover({
   block,
   onUpdate,
+  onDelete,
   trigger,
 }: {
   block: BlockWithId
   onUpdate: (updates: Partial<BlockWithId>) => void
+  onDelete: () => void
   trigger: React.ReactNode
 }) {
   const [open, setOpen] = useState(false)
@@ -39,6 +41,11 @@ export function BlockEditPopover({
   const handleSave = () => {
     onUpdate({ label: title || undefined, category })
     toast.success('Block updated')
+    setOpen(false)
+  }
+
+  const handleDelete = () => {
+    onDelete()
     setOpen(false)
   }
 
@@ -78,9 +85,19 @@ export function BlockEditPopover({
               ))}
             </div>
           </div>
-          <Button size="sm" variant="ghost" className="mt-1" onClick={handleSave}>
-            Save
-          </Button>
+          <div className="flex gap-2 mt-1">
+            <Button size="sm" variant="ghost" className="flex-1" onClick={handleSave}>
+              Save
+            </Button>
+            <Button
+              size="sm"
+              variant="ghost"
+              className="flex-1 text-red-400 hover:text-red-300 hover:bg-red-950/50"
+              onClick={handleDelete}
+            >
+              Delete
+            </Button>
+          </div>
         </div>
       </PopoverContent>
     </Popover>
