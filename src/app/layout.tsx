@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { Toaster } from '@/components/ui/sonner'
 import { CommandMenuProvider } from '@/components/command/CommandMenu'
-import { AppShell } from '@/components/app-shell/AppShell'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
@@ -21,7 +20,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={`${inter.variable} font-sans antialiased`}>
         <CommandMenuProvider>
-          <AppShell>{children}</AppShell>
+          {children}
           <Toaster />
         </CommandMenuProvider>
       </body>

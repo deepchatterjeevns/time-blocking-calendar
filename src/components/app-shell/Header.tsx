@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { format } from 'date-fns'
 import { Calendar as CalendarIcon } from 'lucide-react'
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
+import { UserNav } from '@/components/app-shell/UserNav'
 import { Button } from '@/components/ui/button'
 import {
   Popover,
@@ -43,11 +43,7 @@ export function Header() {
         </Popover>
       </div>
       <div className="flex flex-1 items-center justify-end">
-        <Avatar className="h-8 w-8 border border-zinc-700">
-          <AvatarFallback className="bg-zinc-700 text-xs text-zinc-300">
-            U
-          </AvatarFallback>
-        </Avatar>
+        <UserNav />
       </div>
     </header>
   )
